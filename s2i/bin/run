@@ -9,6 +9,6 @@
 
 set -e
 
-SCRIPT_NAME=$(find /opt/app-root/src/target/universal/stage/bin -type f -not -name "*.bat" -executable)
+SCRIPT_NAME=$(find /opt/app-root/bin/bin -type f -not -name "*.bat" -executable)
 
 exec $SCRIPT_NAME "$PLAY_START_PARAMETER"

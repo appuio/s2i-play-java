@@ -26,5 +26,9 @@ rm -rf /tmp/src
 echo "---> Building application from source..."
 sbt -ivy ~/.ivy2 -verbose -mem 1024 clean stage
 
-chgrp 0 target/universal/stage/bin/*
-chmod g+x target/universal/stage/bin/*
+echo "---> Moving artifacts..."
+mkdir /opt/app-root/bin
+mv /opt/app-root/src/target/universal/stage/* /opt/app-root/bin
+
+chgrp -R 0 /opt/app-root/bin
+chmod -R g=u /opt/app-root/bin

@@ -23,6 +23,12 @@ echo "---> Installing application source..."
 cp -Rf /tmp/src/. ./
 rm -rf /tmp/src
 
+# Run tests if configured to do so
+if [ "$RUN_TESTS" == "true" ]; then
+  echo "---> Running tests..."
+  sbt -ivy ~/.ivy2 -verbose -mem 1024 test
+fi
+
 echo "---> Building application from source..."
 sbt -ivy ~/.ivy2 -verbose -mem 1024 clean stage
 

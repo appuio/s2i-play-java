@@ -7,6 +7,8 @@
 #	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
 #
 
+IVY_PATH="$HOME/.ivy2"
+
 if [[ "$1" == "-h" ]]; then
   exec /usr/libexec/s2i/usage
 fi
@@ -26,11 +28,14 @@ rm -rf /tmp/src
 # Run tests if configured to do so
 if [ "$RUN_TESTS" == "true" ]; then
   echo "---> Running tests..."
-  sbt -ivy ~/.ivy2 -verbose -mem 1024 test
+  sbt -ivy "$IVY_PATH" -verbose test
 fi
 
 echo "---> Building application from source..."
-sbt -ivy ~/.ivy2 -verbose -mem 1024 clean stage
+if [ "$TASK_CLEAN" == "true" ]; then
+  sbt -ivy "$IVY_PATH" -verbose clean
+fi
+sbt -ivy "$IVY_PATH" -verbose stage
 
 echo "---> Moving artifacts..."
 mkdir /opt/app-root/bin

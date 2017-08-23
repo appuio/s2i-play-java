@@ -36,7 +36,8 @@ COPY ./s2i/bin $STI_SCRIPTS_PATH
 # chown the app directories to the correct user
 RUN chown -R 1001:0 $HOME && \
     chmod -R g+rw $HOME && \
-    chmod -R g+rx $STI_SCRIPTS_PATH
+    chmod -R g+rx $STI_SCRIPTS_PATH && \
+    chmod g=u /etc/passwd
 
 # switch to the user 1001
 USER 1001

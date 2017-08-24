@@ -8,3 +8,6 @@
 #	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
 #
 tar cf - .ivy2 target .sbt
+
+# remove src directory to have a clean image
+rm -rf /opt/app-root/src >/dev/null

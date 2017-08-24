@@ -9,6 +9,15 @@
 
 set -e
 
+# Set a username
+if ! whoami &> /dev/null; then
+  if [ -w /etc/passwd ]; then
+    echo "${USER_NAME:-play}:x:$(id -u):0:${USER_NAME:-play} user:${HOME}:/sbin/nologin" >> /etc/passwd
+  fi
+fi
+
+# Find play start script
 SCRIPT_NAME=$(find /opt/app-root/bin/bin -type f -not -name "*.bat" -executable)
 
+# Execute the play application
 exec $SCRIPT_NAME "$PLAY_START_PARAMETER"

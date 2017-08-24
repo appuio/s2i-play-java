@@ -34,6 +34,7 @@ the `PLAY_START_PARAMETER` environment variable.
 | Name                 | Description                         | Default value  |
 | ----                 | ------------------------            | -------------- |
 | PLAY_START_PARAMETER | Parameters passed to the run script |                |
+| USER_NAME            | Username for the random uid         | play           |
 
 ## Ideas
 

@@ -25,6 +25,12 @@ echo "---> Installing application source..."
 cp -Rf /tmp/src/. ./
 rm -rf /tmp/src
 
+# Clean first to remove temporary files of previous builds
+if [ "$INITIAL_CLEAN" == "true" ]; then
+  echo "---> Initial cleanup..."
+  sbt -ivy "$IVY_PATH" -verbose clean
+fi
+
 # Run tests if configured to do so
 if [ "$RUN_TESTS" == "true" ]; then
   echo "---> Running tests..."

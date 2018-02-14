@@ -18,10 +18,11 @@ Directories saved during `save-artifacts`:
 
 ### Environment Variables
 
-| Name       | Description              | Default value  |
-| ----       | ------------------------ | -------------- |
-| RUN_TESTS  | Runs "sbt test" if true  | false          |
-| TASK_CLEAN | Runs "sbt clean" if true | false          |
+| Name           | Description                                     | Default value  |
+| ----           | ----------------------------------------------- | -------------- |
+| INITIAL\_CLEAN | Runs "sbt clean" before test                    | false          |
+| RUN\_TESTS     | Runs "sbt test" if true                         | false          |
+| TASK\_CLEAN    | Runs "sbt clean" between test and build if true | false          |
 
 ## Running
 
@@ -31,10 +32,10 @@ the `PLAY_START_PARAMETER` environment variable.
 
 ### Environment Variables
 
-| Name                 | Description                         | Default value  |
-| ----                 | ------------------------            | -------------- |
-| PLAY_START_PARAMETER | Parameters passed to the run script |                |
-| USER_NAME            | Username for the random uid         | play           |
+| Name                   | Description                         | Default value  |
+| ----                   | ------------------------            | -------------- |
+| PLAY\_START\_PARAMETER | Parameters passed to the run script |                |
+| USER\_NAME             | Username for the random uid         | play           |
 
 ## Ideas
 

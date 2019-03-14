@@ -11,8 +11,8 @@ LABEL \
     io.openshift.s2i.scripts-url=image://$STI_SCRIPTS_PATH
 
 # specify wanted versions of Java and SBT
-ENV JAVA_VERSION=1.8.0 \
-    SBT_VERSION=0.13.16 \
+ENV JAVA_VERSION=11 \
+    SBT_VERSION=1.2.8 \
     HOME=/opt/app-root/src \
     PATH=/opt/app-root/bin:$PATH
 

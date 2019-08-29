@@ -20,4 +20,4 @@ fi
 SCRIPT_NAME=$(find /opt/app-root/bin/bin -type f -not -name "*.bat" -executable)
 
 # Execute the play application
-exec $SCRIPT_NAME "$PLAY_START_PARAMETER"
+exec $SCRIPT_NAME $PLAY_START_PARAMETER

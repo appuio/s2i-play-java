@@ -12,7 +12,7 @@ LABEL \
 
 # specify wanted versions of Java and SBT
 ENV JAVA_VERSION=11 \
-    SBT_VERSION=1.2.8 \
+    SBT_VERSION=1.5.5 \
     HOME=/opt/app-root/src \
     PATH=/opt/app-root/bin:$PATH
 
@@ -20,12 +20,13 @@ ENV JAVA_VERSION=11 \
 EXPOSE 9000
 
 # install Java and SBT
-RUN curl https://bintray.com/sbt/rpm/rpm > /etc/yum.repos.d/bintray-sbt-rpm.repo && \
+RUN rm -r -f /etc/yum.repos.d/bintray-rpm.repo && \
+    yum-config-manager --add-repo https://www.scala-sbt.org/sbt-rpm.repo && \
     yum install -y \
         java-${JAVA_VERSION}-openjdk \
         java-${JAVA_VERSION}-openjdk-devel \
-        sbt-${SBT_VERSION} && \
-    yum clean all -y
+        sbt-${SBT_VERSION} -y && \
+        yum clean all -y
 
 # initialize SBT
 RUN sbt -ivy ${HOME}/.ivy2 -debug about
